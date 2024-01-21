@@ -1,0 +1,17 @@
+{
+	"name": "chainerdockbundle",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "chainerdockbundle",
+	"workspaceFolder": "/home",
+	// リモート先のVS Codeにインストールする拡張機能
+	"extensions": [
+		"ms-python.python", //Pythonセット
+		"aaron-bond.better-comments", //コメントに色をつけられる
+		"kevinrose.vsc-python-indent", //Pythonの改行を自動で最適な場所へ
+		"ms-ceintl.vscode-language-pack-ja", //日本語化
+		"coenraads.bracket-pair-colorizer-2", //かっこ同士の色分け
+		"oderwat.indent-rainbow" //段落の色分け
+	]
+}

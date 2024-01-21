@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  chainerdockbundle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: chainerdockbundle:latest # イメージ名&タグ名
+    container_name: chainerdockbundle # コンテナ名
+    deploy:  # GPUの設定
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+    stdin_open: true
+    tty: true
+    privileged: true
+    environment:
+      TZ: "Asia/Tokyo"
+      DISPLAY: "${DISPLAY}"
+    volumes:
+      - ../:/home
+    working_dir: /home
