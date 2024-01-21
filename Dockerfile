@@ -1,12 +1,12 @@
-# Base image
+# ベースイメージ
 FROM nvidia/cuda:12.2.0-devel-ubuntu20.04
 
-# Environment variables
+# 環境変数
 ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /home
 
-# Update packages & installation
+# パッケージのアップデート＆インストール
 RUN set -x && \
     apt update && \
     apt upgrade -y && \
@@ -16,7 +16,7 @@ RUN set -x && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Add NVIDIA cuDNN repository and install cuDNN
+# NVIDIA cuDNNレポジトリの追加と cuDNN のインストール
 RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl && \
     curl -fsSL https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
     echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
@@ -27,24 +27,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl && 
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /etc/apt/sources.list.d/nvidia-ml.list
 
-# Install NCCL
+# NCCLのインストール
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libnccl2 \
     libnccl-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Set matplotlib backend
+# matplotlibバックエンドの設定
 ENV MPLBACKEND="TkAgg"
 
-# Python requirements
+# requirementsのコピー
 COPY requirements.txt .
-# Upgrade pip
+# pipのアップグレード
 RUN pip install --upgrade pip
-# Install requirements
+# requirementsのインストール(メタ的に早くインストールされていなければいけないものはrequirementsより先にインストール)
 RUN pip install cupy-cuda12x
 RUN pip install numpy==1.23.0
 RUN pip install opencv-python
 RUN pip install --no-cache-dir -r requirements.txt
-# Copy current directory contents
+# カレントディレクトリのコピー
 COPY . .
