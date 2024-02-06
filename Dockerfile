@@ -12,7 +12,7 @@ RUN set -x && \
     apt upgrade -y && \
     apt install -y python3 python3-pip && \
     apt install -y python3-tk && \
-    apt install -y x11-apps sqlite3 libsqlite3-dev zlib1g-dev libjpeg-dev ntpdate wget sudo nano redis-server && \
+    apt install -y x11-apps sqlite3 libsqlite3-dev zlib1g-dev libjpeg-dev ntpdate wget sudo nano && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
