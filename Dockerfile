@@ -28,9 +28,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl && 
     rm -rf /etc/apt/sources.list.d/nvidia-ml.list
 
 # NCCLのインストール
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libnccl2 \
-    libnccl-dev && \
+RUN apt-get update && apt-get install -y --no-install-recommends --allow-change-held-packages \
+    libnccl2 libnccl-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
