@@ -12,5 +12,5 @@ chainerを利用したいディレクトリの親ディレクトリ内でクロ�
 IPアドレスを入力し終わったら、.devcontainer内で`docker-compose up -d --build`を実行してください。  
 ビルドができたらコンテナに入って`xeyes`コマンドを入力して目が出てきたら、GUIの設定が完了。  
 その後CUDAやchaienrのモジュールが必要なプログラム等を実行してchainerが動作するかを確認してください。  
-詳細な手順はNotionにまとめたのでこれに従って環境構築を進めてください。  
+<br>**詳細な手順はNotionにまとめたのでこれに従って環境構築を進めてください。**  
 https://www.notion.so/DeepLearning-Chainer-cfe03e05887c47ec8300c3c1a035292c?pvs=4
